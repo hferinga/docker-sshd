@@ -48,12 +48,16 @@ else
     print_fingerprints /etc/ssh/keys
 fi
 
+# simple solution to get authorized_keys for root user 
+# into the correct location (mounting it directly uses
+# the wrong permissions and can not be corrected)
+if [ -f ~/pubkeys/authorized_keys ]; then
+    cp ~/pubkeys/authorized_keys ~/.ssh/authorized_keys
+fi
+
 # Fix permissions, if writable
 if [ -w ~/.ssh ]; then
     chown root:root ~/.ssh && chmod 700 ~/.ssh/
-fi
-if [ -f ~/pubkeys/authorized_keys ]; then
-    cp ~/pubkeys/authorized_keys ~/.ssh/authorized_keys
 fi
 if [ -w ~/.ssh/authorized_keys ]; then
     chown root:root ~/.ssh/authorized_keys

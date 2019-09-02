@@ -1,5 +1,5 @@
 NAME := sshd
-TAG := latest
+TAG := 1.0.4
 IMAGE_NAME := hferinga/$(NAME)
 
 .PHONY: help build push clean
