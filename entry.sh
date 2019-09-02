@@ -52,6 +52,9 @@ fi
 if [ -w ~/.ssh ]; then
     chown root:root ~/.ssh && chmod 700 ~/.ssh/
 fi
+if [ -f ~/pubkeys/authorized_keys ]; then
+    cp ~/pubkeys/authorized_keys ~/.ssh/authorized_keys
+fi
 if [ -w ~/.ssh/authorized_keys ]; then
     chown root:root ~/.ssh/authorized_keys
     chmod 600 ~/.ssh/authorized_keys
